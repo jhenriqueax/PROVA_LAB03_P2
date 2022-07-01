@@ -12,6 +12,7 @@ public class Urna {
 
 	private Candidato[] candidatos;
 
+	private int contaVotos;
 	
 	
 	
@@ -27,6 +28,7 @@ public class Urna {
 		this.candidatos[this.qntCandidatos -2] = new Candidato("branco"); // -2 para salva na ultima posição do array
 		
 		this.statusVotacao = 1;
+		this.contaVotos = 0;
 	}
 
 	
@@ -181,6 +183,7 @@ public class Urna {
 			eleitores[posicaoEleitor].setStatusVotacao(true);
 			candidatos[posicaoCandidato].SetVotos();
 			
+			contaVotos += 1;
 				}
 			}
 		
@@ -199,7 +202,7 @@ public class Urna {
 		
 		String retorno = "Quantidade de Eleitores Permitidos: " + qntEleitores + " - "
 				+ "Quantidade de Candidatos Permitidos: " + qntCandidatos + " - " +
-				status + "Quantidade de Votos Depositados: " + ; 
+				status + "Quantidade de Votos Depositados: " + contaVotos; 
 				
 				return retorno;
 		
