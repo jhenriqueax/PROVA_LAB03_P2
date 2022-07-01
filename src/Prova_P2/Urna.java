@@ -6,7 +6,7 @@ public class Urna {
 
 	private int qntCandidatos;
 
-	private Boolean statusVotacao;
+	private int statusVotacao;
 
 	private Eleitor[] eleitores;
 
@@ -26,7 +26,7 @@ public class Urna {
 		this.candidatos[this.qntCandidatos -1] = new Candidato("nulo"); // -1 para salva na ultima posição do array
 		this.candidatos[this.qntCandidatos -2] = new Candidato("branco"); // -2 para salva na ultima posição do array
 		
-		this.statusVotacao = false;
+		this.statusVotacao = 1;
 	}
 
 	
@@ -111,7 +111,7 @@ public class Urna {
 	}
 	
 	public void iniciarVotacao(){
-		if(statusVotacao == false) {
+		if(statusVotacao == 1) {
 			if(todosCandidatos() == true && todosEleitores() == true){
 				
 				for (int i = 0; i < eleitores.length; i++) {
@@ -121,7 +121,7 @@ public class Urna {
 					candidatos[j].zeraVotos();
 				}
 				
-				this.statusVotacao = true;
+				this.statusVotacao = 2;
 				
 			}
 			
@@ -173,7 +173,7 @@ public class Urna {
 		int posicaoEleitor;
 		int posicaoCandidato;
 		
-		if(statusVotacao ==true) {
+		if(statusVotacao == 2) {
 			
 			posicaoEleitor = pegaEleitor(cpfEleitor);
 			posicaoCandidato = pegaCandidato(nomeCandidato);
@@ -184,7 +184,26 @@ public class Urna {
 				}
 			}
 		
-
+	public String toStringUrna(){
+		
+		String status = "";
+		
+		if(statusVotacao == 1){
+			status = "NÃO INICIADA";	
+		}if(statusVotacao == 2){
+			status = "EM ANDAMENTO";
+		}if(statusVotacao == 3){
+			status = "ENCERRADA";
+		}
+		
+		
+		String retorno = "Quantidade de Eleitores Permitidos: " + qntEleitores + " - "
+				+ "Quantidade de Candidatos Permitidos: " + qntCandidatos + " - " +
+				status + "Quantidade de Votos Depositados: " + ; 
+				
+				return retorno;
+		
+	}
 	
 	
 	
