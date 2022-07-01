@@ -32,14 +32,26 @@ public class Eleitor {
     public boolean getStatus(){
     	return statusVotacao;
     	
-
-
     }
 
 	public void setStatusVotacao(boolean statusVotacao) {
 		this.statusVotacao = statusVotacao;
 	}    
     
+	public String toStringEleitor(){
+		
+		String status = "";
+		
+		if(statusVotacao = false) {
+		status = "VOTO NÃO DEPOSITADO";
+		}else{
+			status = "VOTO DEPOSITADO";
+		}
+		
+		String retorno = cpf + " - " + nome + " - " +  status;
+		return retorno;
+	}
+	
 	
 	public int hashCode() {
 		return Objects.hash(cpf);

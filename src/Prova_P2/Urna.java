@@ -25,7 +25,7 @@ public class Urna {
 		this.candidatos = new Candidato[this.qntCandidatos + 2]; // +2 para branco e nulo
 
 		this.candidatos[this.qntCandidatos -1] = new Candidato("nulo"); // -1 para salva na ultima posição do array
-		this.candidatos[this.qntCandidatos -2] = new Candidato("branco"); // -2 para salva na ultima posição do array
+		this.candidatos[this.qntCandidatos -2] = new Candidato("branco"); // -2 para salva na penultima posição do array
 		
 		this.statusVotacao = 1;
 		this.contaVotos = 0;
@@ -81,9 +81,6 @@ public class Urna {
 	}
 
 	
-	
-	
-	
 	private boolean todosEleitores(){
 		
 		boolean fullEleitores = true;
@@ -97,6 +94,8 @@ public class Urna {
 		
 		return fullEleitores;
 	}
+
+	
 	
 	private boolean todosCandidatos(){
 		
@@ -209,22 +208,39 @@ public class Urna {
 	}
 	
 	
+	public String toStringIniciaVotacao(){
+		
+		String candidatosRetorno = "";
+		String eleitoresRetorno = "";
+		
 	
-	
-	
-	public String represenEleitor() {
-		return null;
-
+		for (int i = 0; i < candidatos.length; i++) {
+			if(candidatos != null){
+				candidatosRetorno += candidatos[i].toStringCandidato() + "\n";
+			}
+			
+		}
+		
+		for (int j = 0; j < eleitores.length; j++) {
+			if(eleitores != null){
+				eleitoresRetorno += eleitores[j].toStringEleitor() + "\n";
+			}
+			
+		}
+		
+		String retorno = "-----------"  + "Candidatos" + "-----------" + "\n" + 
+		candidatosRetorno + "\n" + "-----------"  + "Eleitores" + "-----------" +
+			eleitoresRetorno;
+		
+		return retorno;
+		
 	}
 
-	public String represenCandidato() {
-		return null;
-
-	}
 
 
 
 	public void encerrar() {
+		this.statusVotacao = 3;
 
 	}
 
