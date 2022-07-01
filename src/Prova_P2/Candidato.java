@@ -6,7 +6,7 @@ public class Candidato {
 
     private String nome;
 
-    private String id;
+    private int id;
 
     private int votos;
     
@@ -23,13 +23,19 @@ public class Candidato {
 
     }
 
-    public String getId(){
+    public int getId(){
     
 		return id;
 
     }
 
-    public int getVotos() {
+    public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	public int getVotos() {
 		return votos;
 
     }

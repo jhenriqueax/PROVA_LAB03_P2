@@ -37,11 +37,13 @@ public class Urna {
 		for (int i = 0; i < eleitores.length; i++) {
 			if (eleitores[i] != null) {
 
-				this.eleitores[0] = new Eleitor(nome, cpf, false);
+				this.eleitores[0] = new Eleitor(nome, cpf);
 
 			}
 		}
 	}
+
+
 
 	private boolean comparaCanditado(String nome) {
 
@@ -68,6 +70,7 @@ public class Urna {
 			for (int i = 0; i < candidatos.length; i++) {
 				if (candidatos[i] != null) {
 					this.candidatos[i] = new Candidato(nome);
+					candidatos[i].setId(i);
 					break;
 				}
 			}
@@ -128,13 +131,59 @@ public class Urna {
 	
 	
 	
-	
-	
-	public void RegistrarVota() {
+	private int pegaEleitor(String cpfEleitor){
 		
+		int posicaoEleitor = 0;
+			
+			Eleitor pegaEleitor = new Eleitor("nome", cpfEleitor);
+			
+			for (int i = 0; i < eleitores.length; i++) {
+				if(eleitores[i].equals(pegaEleitor)){
+					posicaoEleitor = i;
+					break;
+				}
+			}
 		
-
+		return posicaoEleitor;
+		
 	}
+	
+	private int pegaCandidato(String nomeCandidato){
+	
+		int posicaoCandidato = 0;
+		
+			Candidato pegaCandidato = new Candidato(nomeCandidato);
+			
+			for (int j = 0; j < candidatos.length; j++) {
+				if(candidatos[j].equals(pegaCandidato)){
+					posicaoCandidato = j;
+					break;
+				}
+			}
+		
+			return posicaoCandidato;
+		}
+		
+		
+	
+
+	
+	public void RegistrarVotos(String cpfEleitor, String nomeCandidato) {
+	
+		int posicaoEleitor;
+		int posicaoCandidato;
+		
+		if(statusVotacao ==true) {
+			
+			posicaoEleitor = pegaEleitor(cpfEleitor);
+			posicaoCandidato = pegaCandidato(nomeCandidato);
+			
+			eleitores[posicaoEleitor].setStatusVotacao(true);
+			candidatos[posicaoCandidato].SetVotos();
+			
+				}
+			}
+		
 
 	
 	
