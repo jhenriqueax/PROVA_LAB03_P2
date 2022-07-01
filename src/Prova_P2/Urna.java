@@ -5,6 +5,8 @@ public class Urna {
 	private int qntEleitores;
 
 	private int qntCandidatos;
+	
+	private int faltantes;
 
 	private int statusVotacao;
 
@@ -182,7 +184,21 @@ public class Urna {
 		return retorno;
 	}
 
-	public String toStringUrna() {
+	public int faltantes(){
+
+		
+		for (int i = 0; i < eleitores.length; i++) {
+			if(eleitores[i] != null){
+				if (eleitores[i].getStatus() == false){
+					faltantes += 1;
+				} 
+				
+			}
+		}
+		return this.faltantes;
+	}
+	
+ 	public String toStringUrna() {
 
 		String status = "";
 
