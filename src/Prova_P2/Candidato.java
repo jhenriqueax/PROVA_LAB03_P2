@@ -71,7 +71,8 @@ public class Candidato {
 
 
 	public String toString() {
-		return null;
+		String retorno = id + " - " + nome + " - " + "Quantidade de Votos Recebidos: " + votos; 
+		return retorno;
 
     }
 
